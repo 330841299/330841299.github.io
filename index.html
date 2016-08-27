@@ -3,56 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-<style type="text/css">
-*{margin:0;padding:0;}
-ul{list-style:none;}
-ul li{float:left;margin-left:10px;}
-ul li img{width:240px;height:160px;}
-#tooltip{
-	position:absolute;
-	border:1px solid #ccc;
-	background:#333;
-	padding:2px;
-	display:none;
-	color:#fff;
-}
-</style>
-
 </head>
 <body>
-	<ul>
-	  <li><a href="img/1.jpg"><img src="img/1.jpg" /></a></li>
-	  <li><a href="img/2.jpg"><img src="img/2.jpg" /></a></li>
-	  <li><a href="img/3.jpg"><img src="img/3.jpg" /></a></li>
-	  <li><a href="img/4.jpg"><img src="img/4.jpg" /></a></li>
-	</ul>
-<div>
-<h3 id="x"></h3>
-<h3 id="y"></h3>
-</div>
-<script type="text/javascript" src="jquery-1.11.1.js"></script>
-<script type="text/javascript">
+	<input class="input1" type="text" id="num1">
+	<input class="input2" type="text" id="sign">
+	<input class="input3" type="text" id="num2"> =
+	<input class="input4" type="text" id="result">
+	<input type="button"value="计算" class="btn">
 
-	
-	$("li a").mouseover(function(){
-		var href = $(this).attr("href")
-		var tooltip = "<div id='tooltip'><img src='"+ href +"'/><div>"; 
-		$("body").append(tooltip);						 
-		$("#tooltip").show("fast");	 
-
-    }).mousemove(function(event){
-
-		$("#tooltip").css({"top":(event.pageY+10) + "px","left":(event.pageX+20) + "px"
-		});
-		$("#x").text(event.pageX+10);
-		$("#y").text(event.pageY+20);
-
-	}).mouseleave(function(){	
-
-		$("#tooltip").remove();	 
-		
-    });
-  
-</script>
+	<p></p>
+	<script src="jQuery-1.11.1.js"></script>
+	<script type="text/javascript">
+	//switch语句
+	$(".btn").click(function(){
+	var num1 = Number($("#num1").val());//获取第一个input的val
+	var num2 = Number($("#num2").val());//获取第三个input的val
+	var sign =$("#sign").val();//获取第二个input的= - * /
+	var result = 0;
+	switch (sign){//判断sign  当sign
+		case "+" : result = num1 + num2; break;//当sign=+的时候
+		case "-" : result = num1 - num2; break;//当sign=-的时候
+		case "*" : result = num1 * num2; break;//当sign=*的时候
+		case "/" : result = num1 / num2; break;//当sign=/的时候
+	}
+	$("#result").val(result);
+	})
+	</script>
 </body>
 </html>
